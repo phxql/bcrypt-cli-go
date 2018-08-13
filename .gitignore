@@ -16,10 +16,15 @@
 /vendor/
 /Godeps/
 
-bcrypt-cli-go
+### IntelliJ ###
 
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+
+### Application ###
+
+bcrypt-cli-go
+bin/
