@@ -2,14 +2,14 @@ package main
 
 import "fmt"
 import (
+	"bufio"
 	"golang.org/x/crypto/bcrypt"
 	"os"
 	"strconv"
-	"bufio"
 )
 
 func main() {
-    var password = "-"
+	var password = "-"
 	var cost = 12
 
 	// Use password from args, if provided
@@ -31,11 +31,11 @@ func main() {
 }
 
 func bcryptPassword(password string, cost int) string {
-	var hashedPassword, err = bcrypt.GenerateFromPassword([]byte(password), cost)
+	var hash, err = bcrypt.GenerateFromPassword([]byte(password), cost)
 	if err != nil {
 		panic(err)
 	}
-	return string(hashedPassword)
+	return string(hash)
 }
 
 func convertStringToInt(input string) int {
@@ -54,5 +54,6 @@ func readFromStdin() string {
 		panic(err)
 	}
 
-	return input
+	// Remove last char, as ReadString returns the input with the delimiter
+	return input[:len(input)-1]
 }
